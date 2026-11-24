@@ -4,7 +4,8 @@ def menu_admin():
         "Escoja una opcion\n",
         "1) Registrar usuario\n",
         "2) Consultar historia medica\n",
-        "3) Salir\n")
+        "3) reporte carga medicos \n"
+        "4) Salir\n")
     
 def menu_doc():
     print(

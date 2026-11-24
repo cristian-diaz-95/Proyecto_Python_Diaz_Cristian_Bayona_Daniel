@@ -45,11 +45,13 @@ def cargar_paciente(info_paciente):
                 print("el paciente ya existe se procede a cancelar el proceso")
     
 def crear_base_diagnostico():
-    with open (nom_arch,"r",encoding="utf-8") as arch:
-                datos=json.load(arch)
-                datos["diagnosticos"] = []
-    with open (nom_arch,"w",encoding="utf-8") as arch:
-                    json.dump(datos,arch,indent=4)
+    with open(nom_arch, "r", encoding="utf-8") as arch:
+        datos = json.load(arch)
+
+    if "diagnosticos" not in datos:
+        datos["diagnosticos"] = []
+        with open(nom_arch, "w", encoding="utf-8") as arch:
+            json.dump(datos, arch, indent=4)
 
 def verificacion_paciente(identificacion):
     with open (nom_arch,"r",encoding="utf-8") as arch:

@@ -29,7 +29,7 @@ if rol == "admin":
     while True:
         menus.menu_admin()       
         opcion=int(input("que opcion desea ejecutar: "))
-        if opcion<1 or opcion > 3:
+        if opcion<1 or opcion > 4:
             print("ERROR\n Opcion ingresada invalida\n Vuelve a intentarlo")
             continue    
         match opcion:
@@ -41,8 +41,16 @@ if rol == "admin":
                 modulo_historia_clinica.busqueda_paciente(buscar)
                 modulo_historia_clinica.busqueda_diagnostico(buscar)
             case 3:
+                with open (nom_arch,"r",encoding="utf-8") as arch:
+                            datos = json.load(arch)
+                            for medico in datos["usuarios"]:
+                                if medico["rol"]==
+            
+                            
+            case 4:
                 print("vuelva pronto")
-                break   
+                break 
+              
 else:
     while True:
         menus.menu_doc()
@@ -58,6 +66,8 @@ else:
                     paci_diag=input("ingrese el numero de identificacion del paciente a diagnosticar: ")
                     doc_diag=input("ingrese el numero de identificacion del doctor: ")
                     veri_paci=modulo_pacientes.verificacion_paciente(paci_diag)
+                    if veri_paci== None:
+                        continue
                     extrac_doc=modulo_pacientes.extraccion_doctor(doc_diag)
                     diagnostico=modulo_pacientes.info_diagnostico(veri_paci,extrac_doc)
                     modulo_pacientes.cargar_diagnostico(diagnostico)
